@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+}
+
+header {
+  margin-top: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 9%;
+  background-color: skyblue;
+  filter: drop-shadow(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 3rem;
+  color: blue;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+nav a,
+nav p {
+  display: inline;
+  font-size: 1.8rem;
+  color: blue;
+  margin-left: 4rem;
+  font-weight: 400;
+  transition: 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+section a {
+  display: inline;
+  font-size: 1.8rem;
+  color: white;
+  margin-left: 2rem;
+  font-weight: 400;
+  transition: 0.3s ease;
+}
+
+nav a:hover,
+nav a:active,
+section a:hover,
+section a.active {
+  color: skyblue;
+}
+nav a:hover,
+nav a:active,
+nav p:hover,
+nav p.active {
+  color: skyblue;
+  border-bottom: 1px solid skyblue;
+}
+
+nav a:hover,
+nav a:active,
+nav p:hover,
+nav p.active {
+  color: white;
+}
+
+@media (max-width:995px) {
+  nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    border-left: 3px solid skyblue;
+    border-bottom-left-radius: 2rem;
+    padding: 1rem solid;
+    background-color: #161616;
+    border-top: 0.1rem solid rgba(0,0,0,0.1);
+  }
+
+  nav.active {
+    display:block;
+    font-size: 2rem;
+    margin: 3rem;
+  }
+
+  nav a,
+  nav p {
+    color: white;
+    display:block;
+    font-size: 1.7rem;
+    margin: 0.2rem 0;
+  }
+
+  nav a:hover,
+  nav a:active,
+  nav p:hover,
+  nav p.active {
+    color: skyblue;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-bottom: 0.5rem;
+  }
+}
+
+section {
+  min-height: 90vh;
+  padding: 5rem 9% 5rem;
+}
+
+#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  gap: 7rem;
+  background-color: black;
+}
+
+#home h1 {
+  color: white;
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+section h1 {
+  color: rgb(42, 128, 161);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.home-content p {
+  font-size: 1.6rem;
+}
+
+a {
+  font-size: 1.6rem;
+}
+
+span {
+  color: skyblue;
+}
+
+.home-content h3 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+#home h3 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+section h3 {
+  color: skyblue;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.home-img img {
+  margin-top: 6rem;
+  position: relative;
+  width: 27vw;
+}
+
+.typing-text {
+  font-size: 34px;
+  font-weight: 600;
+  min-width: 280px;
+}
+
+.typing-text span {
+  position: relative;
+}
+
+@media (max-width: 1000px) {
+  
+  #home {
+    gap: 4rem;
+  }
+}
+
+@media (max-width:995px) {
+  #home {
+    flex-direction: column;
+    margin: 5rem 4rem;
+  }
+
+  #home .home-content h3 {
+    font-size: 2.5rem;
+  }
+
+  .home-content h1 {
+    font-size: 5rem;
+  }
+
+  .home-img img {
+    width: 55vw;
+    margin-top: 4rem;
+  }
+}
+
+.content {
+  margin-top: 2rem;
+}
+
+[data-content] {
+  display: none;
+}
+
+.active[data-content] {
+  display: block;
+}
+
+.pdf a {
+  display: block;
+}
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Class</title>
+</head>
+
+<body>
+  <header>
+    <a href="#home" class="logo">UNPRG</a>
+    <div class="nav-bar">
+      <nav>
+        <a href="#home">Home</a>
+        <p data-target="#algebra">Algebra</p>
+        <p data-target="#anatomia">Anatomia</p>
+        <p data-target="#aritmetica">Aritmetica</p>
+        <p data-target="#biologia">Biologia</p>
+        <p data-target="#civica">Civica</p>
+        <p data-target="#economia">Economia</p>
+        <p data-target="#filosofia">Filosofia</p>
+        <p data-target="#fisica">Fisica</p>
+        <p data-target="#geografia">Geografia</p>
+        <p data-target="#geometria">Geometria</p>
+        <p data-target="#hm">Hab Matematica</p>
+        <p data-target="#hp">H. Peru</p>
+        <p data-target="#hu">H. Universal</p>
+        <p data-target="#hv">Hab Verbal</p>
+        <p data-target="#lenguaje">Lenguaje</p>
+        <p data-target="#literatura">Literatura</p>
+        <p data-target="#logica">Logica</p>
+        <p data-target="#psicologia">Psicologia</p>
+        <p data-target="#quimica">Quimica</p>
+        <p data-target="#seminarios">Seminarios</p>
+        <p data-target="#trigonometria">Trigonometria</p>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="content">
+    <div class="home-img">
+      <img src="logo.png" alt="campus unprg" />
+    </div>
+    <div class="home-content">
+      <h1>Academia <span>Elite</span> class</h1>
+      <h3 class="typing-text">
+        Recursos de la academia <span>Elite Class</span>
+      </h3>
+      <p>Cada pdf contiene una clase. Solo da click para descargar</p>
+    </div>
+  </section>
+
+  <section data-content id="anatomia" class="content">
+    <h1>Anatomia</h1>
+    <div class="pdf">
+      <h3>Ciclo Ordinario</h3>
+      <a href="anatomia/anatomia-sist-nervioso.pdf">anatomia-sist-nervioso.pdf</a>
+      <a href="anatomia/anatomia-sistema-respiratorio.pdf">anatomia-sistema-respiratorio.pdf</a>
+    </div>
+  </section>
+
+  <section data-content class="content" id="aritmetica">
+    <div>
+      <h1>Aritmetica</h1>
+      <div class="pdf">
+        <h3>Ciclo Ordinario</h3>
+        <a href="aritmetica/ordinario/aritmetica-fracciones.pdf">aritmetica-fracciones.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-mcm-ejer.pdf">aritmetica-mcm-ejer.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s02.pdf">aritmetica-s02.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s03.pdf">aritmetica-s03.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s04.pdf">aritmetica-s04.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s05.pdf">aritmetica-s05.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s06.pdf">aritmetica-s06.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s07.pdf">aritmetica-s07.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s08.pdf">aritmetica-s08.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s10.pdf">aritmetica-s10.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s11.pdf">aritmetica-s11.pdf</a>
+        <a href="aritmetica/ordinario/aritmetica-s12.pdf">aritmetica-s12.pdf</a>
+        <div class="pdf">
+          <h3>Ciclo Intensivo</h3>
+          <a href="aritmetica/intensivo/repaso-aritmetica-s1.pdf">repaso-aritmetica-s1.pdf</a>
+          <a href="aritmetica/intensivo/repaso-aritmetica-s2.pdf">repaso-aritmetica-s2.pdf</a>
+          <a href="aritmetica/intensivo/repaso-aritmetica-s3.pdf">repaso-aritmetica-s3.pdf</a>
+          <a href="aritmetica/intensivo/repaso-aritmetica-s4.pdf.pdf">repaso-aritmetica-s4.pdf</a>
+          <a href="aritmetica/intensivo/repaso-aritmetica-s5.pdf">repaso-aritmetica-s5.pdf</a>
+        </div>
+      </div>
+  </section>
+
+  <section data-content class="content" id="biologia">
+    <div class="pdf">
+      <h1>Biologia</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="biologia/ordinario/biologia-s02-.pdf">biologia-s02-.pdf</a>
+        <a href="biologia/ordinario/biologia-s04.pdf">biologia-s04.pdf</a>
+        <a href="biologia/ordinario/biologia-s05.pdf">biologia-s05.pdf</a>
+        <a href="biologia/ordinario/biologia-s07.pdf">biologia-s07.pdf</a>
+        <a href="biologia/ordinario/biologia-s08-repro.pdf">biologia-s08-repro.pdf</a>
+        <a href="biologia/ordinario/biologia-s08.pdf">biologia-s08.pdf</a>
+        <a href="biologia/ordinario/biologia-s10.pdf">biologia-s10.pdf</a>
+        <a href="biologia/ordinario/biologia-s11.pdf">biologia-s11.pdf</a>
+        <a href="biologia/ordinario/biologia-s12.pdf">biologia-s12-.pdf</a>
+        <a href="biologia/ordinario/biologia-sfree.pdf">biologia-sfree.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="biologia/intensivo/repaso-biologia-s1.pdf">repaso-biologia-s1.pdf</a>
+        <a href="biologia/intensivo/repaso-biologia-s2.pdf">repaso-biologia-s2.pdf</a>
+        <a href="biologia/intensivo/repaso-biologia-s3.pdf">repaso-biologia-s3.pdf</a>
+        <a href="biologia/intensivo/repaso-biologia-s04.pdf">repaso-biologia-04.pdf</a>
+        <a href="biologia/intensivo/repaso-biologia-s05.pdf">repaso-biologia-05.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="civica">
+    <div class="pdf">
+      <h1>Civica</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="civica/ordinario/civica-s02.pdf">civica-s02.pdf</a>
+        <a href="civica/ordinario/civica-s05.pdf">civica-s05.pdf</a>
+        <a href="civica/ordinario/civica-s07.pdf">civica-s07.pdf</a>
+        <a href="civica/ordinario/civica-s09.pdf">civica-s09.pdf</a>
+        <a href="civica/ordinario/civica-s10.pdf">civica-s10.pdf</a>
+        <a href="civica/ordinario/civica-s11.pdf">civica-s11.pdf</a>
+        <a href="civica/ordinario/civica-s12.pdf">civica-s12.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="civica/intensivo/repaso-civica-s1.pdf">repaso-civica-s1.pdf</a>
+        <a href="civica/intensivo/repaso-civica-s2.pdf">repaso-civica-s2.pdf</a>
+        <a href="civica/intensivo/repaso-civica-s3.pdf">repaso-civica-s3.pdf</a>
+        <a href="civica/intensivo/repaso-civica-s4.pdf">repaso-civica-s4.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="economia">
+    <div class="pdf">
+      <h1>Economia</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="economia/ordinario/economia-s02.pdf">economia-s02.pdf</a>
+        <a href="economia/ordinario/economia-s06.pdf">economia-s06.pdf</a>
+        <a href="economia/ordinario/economia-s08-1.pdf">economia-s08-1.pdf</a>
+        <a href="economia/ordinario/economia-s08.pdf">economia-s08.pdf</a>
+        <a href="economia/ordinario/economia-s10.pdf">economia-s10.pdf</a>
+        <a href="economia/ordinario/economia-s11.pdf">economia-s11.pdf</a>
+        <a href="economia/ordinario/economia-s12.pdf">economia-s12.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="economia/intensivo/repaso-economia-s1.pdf">repaso-economia-s1.pdf</a>
+        <a href="economia/intensivo/repaso-economia-s2.pdf">repaso-economia-s2.pdf</a>
+        <a href="economia/intensivo/repaso-economia-s3.pdf">repaso-economia-s3.pdf</a>
+        <a href="economia/intensivo/repaso-economia-s04.pdf">repaso-economia-s4.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="filosofia">
+    <div class="pdf">
+      <h1>Filosofia</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="filosofia/ordinario/filosofia-s01.pdf">filosofia-s01.pdf</a>
+        <a href="filosofia/ordinario/filosofia-s02.pdf">filosofia-s02.pdf</a>
+        <a href="filosofia/ordinario/filosofia-s07-antropoligia.pdf">filosofia-s07.pdf</a>
+        <a href="filosofia/ordinario/filosofia-s10.pdf">filosofia-s10.pdf</a>
+        <a href="filosofia/ordinario/filosofia-s11.pdf">filosofia-s11.pdf</a>
+        <a href="filosofia/ordinario/filosofia-s12.pdf">filosofia-s12.pdf</a>
+        <a href="filosofia/ordinario/filosofia-gnoseologia.pdf">filosofia-gnoseologia.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="filosofia/intensivo/repaso-filosofia-s1.pdf">repaso-filosofia-s1.pdf</a>
+        <a href="filosofia/intensivo/repaso-filosofia-s2.pdf">repaso-filosofia-s2.pdf</a>
+        <a href="filosofia/intensivo/repaso-filosofia-s3.pdf">repaso-filosofia-s3.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="fisica">
+    <div class="pdf">
+      <h1>Fisica</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="fisica/ordinario/fisica-ana-vectorial.pdf">fisica-ana-vectorial.pdf</a>
+        <a href="fisica/ordinario/fisica-capacidad-electrica.pdf">fisica-capacidad-electrica.pdf</a>
+        <a href="fisica/ordinario/fisica-dinamica-s10.pdf">fisica-dinamica-s10.pdf</a>
+        <a href="fisica/ordinario/fisica-dinamica.pdf">fisica-dinamica.pdf</a>
+        <a href="fisica/ordinario/fisica-II-electrodinamica.pdf">fisica-II-electrodinamica.pdf</a>
+        <a href="fisica/ordinario/fisica-II-s08.pdf">fisica-II-s08.pdf</a>
+        <a href="fisica/ordinario/fisica-II-s09.pdf">fisica-II-s09.pdf</a>
+        <a href="fisica/ordinario/fisica-II-s10-2.pdf">fisica-II-s10-2.pdf</a>
+        <a href="fisica/ordinario/fisica-II-s12-hidrostatica.pdf">fisica-II-s12-hidrostatica.pdf</a>
+        <a href="fisica/ordinario/fisica-s02-ad.pdf">fisica-s02-ad.pdf</a>
+        <a href="fisica/ordinario/fisica-s02-ejer.pdf">fisica-s02-ejer.pdf</a>
+        <a href="fisica/ordinario/fisica-s02.pdf">fisica-s02.pdf</a>
+        <a href="fisica/ordinario/fisica-s03-mcu.pdf">fisica-s03-mcu.pdf</a>
+        <a href="fisica/ordinario/fisica-s03.pdf">fisica-s03.pdf</a>
+        <a href="fisica/ordinario/fisica-s08-dilatacion.pdf">fisica-s08-dilatacion.pdf</a>
+        <a href="fisica/ordinario/fisica-s02.pdf">fisica-s02.pdf</a>
+        <a href="fisica/ordinario/fisica-s10-II-hidrostatica.pdf">fisica-s10-II-hidrostatica.pdf</a>
+        <a href="fisica/ordinario/fisica-s10-saavedra.pdf">fisica-s10-saavedra.pdf</a>
+        <a href="fisica/ordinario/fisica-s11-clase-electrodinamica.pdf">fisica-s11-clase-electrodinamica.pdf</a>
+        <a href="fisica/ordinario/fisica-s11.pdf">fisica-s11.pdf</a>
+        <a href="fisica/ordinario/fisica-s12-clase-tpe.pdf">fisica-s12-clase-tpe.pdf</a>
+        <a href="fisica/ordinario/fisica-s12-tpe-basico.pdf">fisica-s12-tpe-basico.pdf</a>
+        <a href="fisica/ordinario/fisica-trabajo-potencia-energia.pdf">fisica-trabajo-potencia-energia.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="fisica/intensivo/repaso-fisica-II-s03.pdf">repaso-fisica-II-s03.pdf</a>
+        <a href="fisica/intensivo/repaso-fisica-II-s3.pdf">repaso-fisica-II-s3.pdf</a>
+        <a href="fisica/intensivo/repaso-fisica-s04.pdf">repaso-fisica-s04.pdf</a>
+        <a href="fisica/intensivo/repaso-fisica-s05.pdf">repaso-fisica-s05.pdf</a>
+        <a href="fisica/intensivo/repaso-fisica-s2.pdf">repaso-fisica-s2.pdf</a>
+        <a href="fisica/intensivo/repaso-fisica-s3.pdf.pdf">repaso-fisica-s3.pdf</a>
+        <a href="fisica/intensivo/repaso-fisicaII-s1.pdf">repaso-fisicaII-s1.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="geografia">
+    <div class="pdf">
+      <h1>Geografia</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="geografia/ordinario/geografia-fronteras.pdf">geografia-fronteras.pdf</a>
+        <a href="geografia/ordinario/geografia-rios.pdf">geografia-rios.pdf</a>
+        <a href="geografia/ordinario/geografía-S11.pdf">geografía-S11.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="geografia/intensivo/repaso-geografia-s04.pdf">repaso-geografia-s04.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="hm">
+    <div>
+      <h1>Habilidad Matematica</h1>
+      <div class="pdf">
+        <h3>Ciclo Ordinario</h3>
+        <a href="hm/ordinario/hm-s2.pdf">hm-s2.pdf</a>
+        <a href="hm/ordinario/hm-s06.pdf">hm-s06.pdf</a>
+        <a href="hm/ordinario/hm-s08.pdf">hm-s08.pdf</a>
+        <a href="hm/ordinario/hm-s10.pdf">hm-s10.pdf</a>
+        <a href="hm/ordinario/hm-s11.pdf">hm-s11.pdf</a>
+        <a href="hm/ordinario/hm-ho.pdf">hm-ho.pdf</a>
+        <a href="hm/ordinario/hm-induccion.pdf">hm-induccion.pdf</a>
+        <a href="hm/ordinario/hm-s-09-hab-oper.pdf">hm-s-09-hab-oper.pdf</a>
+        <a href="hm/ordinario/hm-sfree.pdf">hm-sfree.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="hm/intensivo/repaso-hm-s1.pdf">repaso-hm-s1.pdf</a>
+        <a href="hm/intensivo/repaso-hm-s2.pdf">repaso-hm-s2.pdf</a>
+        <a href="hm/intensivo/repaso-hm-s3.pdf">repaso-hm-s3.pdf</a>
+        <a href="hm/intensivo/repaso-hm-s04.pdf">repaso-hm-s04.pdf</a>
+        <a href="hm/intensivo/repaso-hm-s05.pdf">repaso-hm-s05.pdf</a>
+        <a href="hm/intensivo/repaso-hm-tarde-s2.pdf">repaso-hm-tarde-s2.pdf</a>
+        <a href="hm/intensivo/repaso-hm-tarde-s3.pdf">repaso-hm-tarde-s3.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="hp">
+    <div class="pdf">
+      <h1>H. Peru</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="hp/ordinario/hp-emancipacion.pdf">hp-emancipacion.pdf</a>
+        <a href="hp/ordinario/hp-peru-antiguo.pdf">hp-peru-antiguo.pdf</a>
+        <a href="hp/ordinario/hp-s04.pdf">hp-s04.pdf</a>
+        <a href="hp/ordinario/hp-s10.pdf">hp-s10.pdf</a>
+        <a href="hp/ordinario/hp-s12-republica.pdf">hp-s12-republica.pdf</a>
+        <a href="hp/ordinario/hp-s12.pdf">hp-s12.pdf</a>
+        <a href="hp/ordinario/hp-tierra-firme.pdf">hp-tierra-firme.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="hp/ordinario/repaso-hp-s3.pdf">repaso-hp-s3.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="hu">
+    <div class="pdf">
+      <h1>H. Universal</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="hu/ordinario/hu-1gm.pdf">hu-1gm.pdf</a>
+        <a href="hu/ordinario/hu-grecia.pdf">hu-grecia.pdf</a>
+        <a href="hu/ordinario/hu-imperio-bizantino.pdf">hu-imperio-bizantino.pdf</a>
+        <a href="hu/ordinario/hu-imperio-roma.pdf">ordinario/hu-imperio-roma.pdf</a>
+        <a href="hu/ordinario/hu-s02.pdf">ordinario/hu-s02.pdf</a>
+        <a href="hu/ordinario/hu-s2.pdf">ordinario/hu-s2.pdf</a>
+        <a href="hu/ordinario/hu-s10.pdf">ordinario/hu-s10.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="hu/ordinario/repaso-hu-s1.pdf">repaso-hu-s1.pdf</a>
+        <a href="hu/ordinario/repaso-hu-s3.pdf">repaso-hu-s3.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="hv">
+    <div class="pdf">
+      <h1>H. Verbal</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="hv/ordinario/hv-fig-lit.pdf">hv-fig-lit.pdf</a>
+        <a href="hv/ordinario/hv-s02-sinonimia.pdf">hv-s02-sinonimia.pdf</a>
+        <a href="hv/ordinario/hv-s08.pdf">hv-s08.pdf</a>
+        <a href="hv/ordinario/hv-s10.pdf">hv-s10.pdf</a>
+        <a href="hv/ordinario/hv-s11.pdf">hv-s11.pdf</a>
+        <a href="hv/ordinario/hv-s12.pdf">hv-s12.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="hv/ordinario/repaso-hv-s05.pdf">repaso-hv-s05.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="lenguaje">
+    <div class="pdf">
+      <h1>Lenguaje</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="lenguaje/ordinario/lenguaje-grado.pdf">lenguaje-grado.pdf</a>
+        <a href="lenguaje/ordinario/lenguaje-nociones-linguisticas.pdf">lenguaje-nociones-linguisticas.pdf</a>
+        <a href="lenguaje/ordinario/lenguaje-s-adjetivo-2.pdf">lenguaje-s-adjetivo-2.pdf</a>
+        <a href="lenguaje/ordinario/lenguaje-s10.pdf">lenguaje-s10.pdf</a>
+        <a href="lenguaje/ordinario/lenguaje-s11.pdf">lenguaje-s11.pdf</a>
+        <a href="lenguaje/ordinario/lenguaje-s12.pdf">lenguaje-s12.pdf</a>
+        <a href="lenguaje/ordinario/lenguaje-sustantivo-nombre.pdf">lenguaje-sustantivo-nombre.pdf</a>
+        <a href="lenguaje/ordinario/lenguaje-vicios-lenguaje.pdf">lenguaje-vicios-lenguaje.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="lenguaje/intensivo/repaso-lenguaje-s1.pdf">repaso-lenguaje-s1.pdf</a>
+        <a href="lenguaje/intensivo/repaso-lenguaje-s2.pdf">repaso-lenguaje-s2.pdf</a>
+        <a href="lenguaje/intensivo/repaso-lenguaje-s3.pdf">repaso-lenguaje-s3.pdf</a>
+        <a href="lenguaje/intensivo/repaso-lenguaje.pdf">intensivo/repaso-lenguaje.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="algebra">
+    <div>
+      <h1>Algebra</h1>
+      <div class="pdf">
+        <h3>Ciclo Ordinario</h3>
+        <a href="/algebra/ordinario/algebra-s02.pdf">algebra-s02.pdf</a>
+        <a href="/algebra/ordinario/algebra-s03.pdf">algebra-s03.pdf</a>
+        <a href="/algebra/ordinario/algebra-s05.pdf">algebra-s05.pdf</a>
+        <a href="/algebra/ordinario/algebra-s06.pdf">algebra-s06.pdf</a>
+        <a href="/algebra/ordinario/algebra-s07.pdf">algebra-s07.pdf</a>
+        <a href="/algebra/ordinario/algebra-s08.pdf">algebra-s08.pdf</a>
+        <a href="/algebra/ordinario/algebra-s09.pdf">algebra-s09.pdf</a>
+        <a href="/algebra/ordinario/algebra-s10.pdf">algebra-s10.pdf</a>
+        <a href="/algebra/ordinario/algebra-s11-inecuaciones.pdf">algebra-s11-inecuaciones.pdf</a>
+        <a href="/algebra/ordinario/algebra-s11.pdf">algebra-s11.pdf</a>
+        <a href="/algebra/ordinario/algebra-s12.pdf">algebra-s12.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="algebra/intensivo/repaso-algebra-desarrollo-s04.pdf">repaso-algebra-desarrollo-s04.pdf</a>
+        <a href="algebra/intensivo/repaso-algebra-s1.pdf">repaso-algebra-s1.pdf</a>
+        <a href="algebra/intensivo/repaso-algebra-s2.pdf">repaso-algebra-s2.pdf</a>
+        <a href="algebra/intensivo/repaso-algebra-s3.pdf">repaso-algebra-s3.pdf</a>
+        <a href="algebra/intensivo/repaso-algebra-s4.pdf">repaso-algebra-s4.pdf</a>
+        <a href="algebra/intensivo/repaso-algebra-s5.pdf">repaso-algebra-s5.pdf</a>
+
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="literatura">
+    <div class="pdf">
+      <h1>Literatura</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="literatura/ordinario/literatura-espanola.pdf">literatura-espanola.pdf</a>
+        <a href="literatura/ordinario/literatura-s02.pdf">literatura-s02.pdf</a>
+        <a href="literatura/ordinario/literatura-s03.pdf">literatura-s03.pdf</a>
+        <a href="literatura/ordinario/literatura-s10.pdf">literatura-s10.pdf</a>
+        <a href="literatura/ordinario/literatura-s11.pdf">literatura-s11.pdf</a>
+        <a href="literatura/ordinario/literatura-s12.pdf">literatura-s12.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="literatura/intensivo/repaso-literatura-s1.pdf">repaso-literatura-s1.pdf</a>
+        <a href="literatura/intensivo/repaso-literatura-s2.pdf">repaso-literatura-s2.pdf</a>
+        <a href="literatura/intensivo/repaso-literatura-s3.pdf">repaso-literatura-s3.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="logica">
+    <div class="pdf">
+      <h1>Logica</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="logica/ordinario/logica-boecio.pdf">logica-boecio.pdf</a>
+        <a href="logica/ordinario/logica-prop-cat.pdf">logica-prop-cat.pdf</a>
+        <a href="logica/ordinario/logica-prop-compuestas.pdf">logica-prop-compuestas.pdf</a>
+        <a href="logica/ordinario/logica-proposicional.pdf">logica-proposicional.pdf</a>
+        <a href="logica/ordinario/logica-silogismo-categorico.pdf">logica-silogismo-categorico.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="logica/ordinario/repaso-logica-s05.pdf">repaso-logica-s05.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="psicologia">
+    <div class="pdf">
+      <h1>Psicologia</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="psicologia/psicologia-s2.pdf">psicologia-s2.pdf</a>
+
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="psicologia/repaso-psicologia-s04.pdf">repaso-psicologia-s04.pdf</a>
+        <a href="psicologia/repaso-psicologia-s2-s3.pdf">repaso-psicologia-s2-s3.pdf</a>
+        <a href="psicologia/repaso-psicologia-s3.pdf">repaso-psicologia-s3.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="quimica">
+    <div class="pdf">
+      <h1>Quimica</h1>
+      <div>
+        <h3>Ciclo Ordinario</h3>
+        <a href="quimica/ordinario/quimica-clasificacion.pdf">quimica-clasificacion.pdf</a>
+        <a href="quimica/ordinario/quimica-reacc-redox.pdf">quimica-reacc-redox.pdf</a>
+        <a href="quimica/ordinario/quimica-s02-.pdf">quimica-s02-.pdf</a>
+        <a href="quimica/ordinario/quimica-s02.pdf">quimica-s02.pdf</a>
+        <a href="quimica/ordinario/quimica-s03.pdf">quimica-s03.pdf</a>
+        <a href="quimica/ordinario/quimica-s05.pdf">quimica-s05.pdf</a>
+        <a href="quimica/ordinario/quimica-s06.pdf">quimica-s06.pdf</a>
+        <a href="quimica/ordinario/quimica-s07.pdf">quimica-s07.pdf</a>
+        <a href="quimica/ordinario/quimica-s08.pdf">quimica-s08.pdf</a>
+        <a href="quimica/ordinario/quimica-s10.pdf">quimica-s10.pdf</a>
+        <a href="quimica/ordinario/quimica-s11.pdf">quimica-s11.pdf</a>
+        <a href="quimica/ordinario/quimica-s12.pdf">quimica-s12.pdf</a>
+        <a href="quimica/ordinario/quimica-sfree.pdf">quimica-sfree.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="quimica/intensivo/repaso-quimica-s02.pdf">repaso-quimica-s02.pdf</a>
+        <a href="quimica/intensivo/repaso-quimica-s3.pdf">repaso-quimica-s3.pdf</a>
+        <a href="quimica/intensivo/repaso-quimica-s4.pdf">repaso-quimica-s4.pdf</a>
+        <a href="quimica/intensivo/repaso-quimica-s05.pdf">repaso-quimica-s05.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="seminarios">
+    <div class="pdf">
+      <h1>Seminarios</h1>
+      <div>
+        <h3>Gratis y de pago</h3>
+        <a href="seminarios/repaso-viernes-hm1.pdf">repaso-viernes-hm1.pdf</a>
+        <a href="seminarios/repaso-viernes-hv1.pdf">repaso-viernes-hv1.pdf</a>
+        <a href="seminarios/seminario-aritmetica.pdf">seminario-aritmetica.pdf</a>
+        <a href="seminarios/Seminario-geometria.pdf">Seminario-geometria.pdf</a>
+        <a href="seminarios/seminario-fisica.pdf">seminario-fisica.pdf</a>
+        <a href="seminarios/seminario-gratis-aritmetica.pdf">seminario-gratis-aritmetica.pdf</a>
+        <a href="seminarios/seminario-gratis-fisica.pdf">seminario-gratis-fisica.pdf</a>
+        <a href="seminarios/seminario-habilidad-matematica.pdf">seminario-habilidad-matematica.pdf</a>
+        <a href="seminarios/seminario-hm-berru.pdf">seminarios/seminario-hm-berru.pdf</a>
+        <a href="seminarios/seminario-hm-carhuancho.pdf"></a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="trigonometria">
+    <div>
+      <h1>Trigonometria</h1>
+      <div class="pdf">
+        <h3>Ciclo Ordinario</h3>
+        <a href="trigonometria/trigonometria-parabola.pdf">trigonometria-parabola.pdf</a>
+        <a href="trigonometria/trigonometria-s02-.pdf">trigonometria-s02-.pdf</a>
+        <a href="trigonometria/trigonometria-s02.pdf">trigonometria-s02.pdf</a>
+        <a href="trigonometria/trigonometria-s03.pdf">trigonometria-s03.pdf</a>
+        <a href="trigonometria/trigonometria-s04-1.pdf">trigonometria-s04-1.pdf</a>
+        <a href="trigonometria/trigonometria-s04.pdf">trigonometria-s04.pdf</a>
+        <a href="trigonometria/trigonometria-s05.pdf">trigonometria-s05.pdf</a>
+        <a href="trigonometria/trigonometria-s07.pdf">trigonometria-s07.pdf</a>
+        <a href="trigonometria/trigonometria-s08-1.pdf">trigonometria-s08-1.pdf</a>
+        <a href="trigonometria/trigonometria-s08-trans-trigo.pdf">trigonometria-s08-trans-trigo.pdf</a>
+        <a href="trigonometria/trigonometria-s08.pdf">trigonometria-s08.pdf</a>
+        <a href="trigonometria/trigonometria-s10.pdf">trigonometria-s10.pdf</a>
+        <a href="trigonometria/trigonometria-s11-la-recta.pdf">trigonometria-s11-la-recta.pdf</a>
+        <a href="trigonometria/trigonometria-s11-pendiente-circunf.pdf">trigonometria-s11-pendiente-circunf.pdf</a>
+        <a href="trigonometria/trigonometria-S12-becerra.pdf">trigonometria-S12-becerra.pdf</a>
+        <a href="trigonometria/trigonometria-s12-parabola.pdf">trigonometria-s12-parabola.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="trigonometria/intensivo/repaso-trigonometria-s1.pdf">repaso-trigonometria-s1.pdf</a>
+        <a href="trigonometria/intensivo/repaso-trigonometria-s3.pdf">repaso-trigonometria-s3.pdf</a>
+        <a href="trigonometria/intensivo/repaso-trigonometria-s4.pdf">repaso-trigonometria-s4.pdf</a>
+        <a href="trigonometria/intensivo/repaso-trigonometria-s5.pdf">repaso-trigonometria-s5.pdf</a>
+        <a href="trigonometria/intensivo/repaso-trigonometria-tarde-s2.pdf">repaso-trigonometria-tarde-s2.pdf</a>
+        <a href="trigonometria/intensivo/parabola-resuelto.pdf">trigonometria/intensivo/parabola-resuelto.pdf</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-content class="content" id="geometria">
+    <div>
+      <h1>Geometria</h1>
+      <div class="pdf">
+        <h3>Ciclo Ordinario</h3>
+        <a href="geometria/ordinario/geo-nnn.pdf">geo-nnn.pdf</a>
+        <a href="geometria/ordinario/geo-triang-notables.pdf">geo-triang-notables.pdf</a>
+        <a href="geometria/ordinario/geo-triangulos.pdf">geo-triangulos.pdf</a>
+        <a href="geometria/ordinario/geom-free.pdf">geom-free.pdf</a>
+        <a href="geometria/ordinario/geometria-areas.pdf">geometria-areas.pdf</a>
+        <a href="geometria/ordinario/geometria-s02.pdf">geometria-s02.pdf</a>
+        <a href="geometria/ordinario/geometria-s04.pdf">geometria-s04.pdf</a>
+        <a href="geometria/ordinario/geometria-s06.pdf">geometria-s06.pdf</a>
+        <a href="geometria/ordinario/geometria-s07.pdf">geometria-s07.pdf</a>
+        <a href="geometria/ordinario/geometria-s08.pdf">geometria-s08.pdf</a>
+        <a href="geometria/ordinario/geometria-s09.pdf">geometria-s09.pdf</a>
+        <a href="geometria/ordinario/geometria-s10.pdf">geometria-s10.pdf</a>
+        <a href="geometria/ordinario/geometria-s11-analítica.pdf">geometria-s11-analítica.pdf</a>
+        <a href="geometria/ordinario/geometria-s12-repaso.pdf">geometria-s12-repaso.pdf</a>
+      </div>
+      <div class="pdf">
+        <h3>Ciclo Intensivo</h3>
+        <a href="geometria/intensivo/repaso-geometria-s2.pdf">repaso-geometria-s2.pdf</a>
+        <a href="geometria/intensivo/repaso-geometria-s3.pdf">repaso-geometria-s3.pdf</a>
+        <a href="geometria/intensivo/repaso-geometria-s4.pdf">repaso-geometria-s4.pdf</a>
+        <a href="geometria/intensivo/repaso-geometria-s05.pdf">repaso-geometria-s05.pdf</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+<script>
+  const targets = document.querySelectorAll("[data-target]")
+  const content = document.querySelectorAll("[data-content]")
+
+  targets.forEach(target => (
+    target.addEventListener("click", () => {
+      content.forEach(c => {
+        c.classList.remove("active")
+      })
+
+      const t = document.querySelector(target.dataset.target)
+      t.classList.add("active")
+    })
+  ))
+</script>
+
+</html>
